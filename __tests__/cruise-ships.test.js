@@ -10,9 +10,19 @@ describe("constructor for ship",()=>{
 
     test("the ship has a start point",()=>{
         const myShip = new Ship ('Iceland')
-        expect(myShip.ports).toEqual('Iceland')
+        expect(myShip.startingPort).toEqual('Iceland')
+    })
+
+    test(" the ship can set sail",()=>{
+        const myShip=new Ship('Iceland')
+        myShip.toSetSail()
+        expect(myShip.startingPort).toBeFalsy();
     })
 })
+
+
+//object:ship, method:set sail, property:port
+
 
 
   

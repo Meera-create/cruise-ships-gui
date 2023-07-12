@@ -13,8 +13,12 @@
 
 function Ship(port,name){
     this.name=name;
-    this.ports=port;
+    this.startingPort=port;
     this.passenger=0;
+}
+
+Ship.prototype.toSetSail = function () {
+    this.startingPort=0;
 }
 
 

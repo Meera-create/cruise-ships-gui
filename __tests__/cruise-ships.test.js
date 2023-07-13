@@ -1,6 +1,7 @@
 
 /*globals describe it expect*/
 const Ship= require('../src/cruise-ships')
+const Port = require ('../src/port')
 //importing the constructor file
 
 describe("constructor for ship",()=>{
@@ -9,14 +10,24 @@ describe("constructor for ship",()=>{
     })
 
     test("the ship has a start point",()=>{
-        const myShip = new Ship ('Iceland')
-        expect(myShip.startingPort).toEqual('Iceland')
+        const Rome= new Port('Rome');
+        const myShip = new Ship(Rome)
+        expect(myShip.currentPort).toEqual(Rome)
     })
 
     test(" the ship can set sail",()=>{
-        const myShip=new Ship('Iceland')
+        const Iceland=new Port('Iceland')
+        const myShip = new Ship (Iceland);
         myShip.toSetSail()
-        expect(myShip.startingPort).toBeFalsy();
+        expect(myShip.currentPort).toBeFalsy();
+    })
+
+    test('it docks at another port',()=>{ 
+        const Iceland=new Port('Iceland')
+        const myship = new Ship (Iceland);
+        const Vietnam = new Port ('Vietnam')
+        myship.docks(Vietnam)
+        expect(myship.currentPort).toEqual(Vietnam);
     })
 })
 

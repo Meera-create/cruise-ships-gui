@@ -9,16 +9,22 @@
 //object:ship
 //method:add
 //property:passengers
-
+const Port = require ('../src/port')
 
 function Ship(port,name){
     this.name=name;
-    this.startingPort=port;
+    this.currentPort=port;
     this.passenger=0;
 }
 
 Ship.prototype.toSetSail = function () {
-    this.startingPort=0;
+    this.currentPort=0;
+}
+
+const location = new Port('location')
+
+Ship.prototype.docks=function(location){
+    this.currentPort=location;
 }
 
 

@@ -10,7 +10,7 @@ describe('itinerary ',()=>{
     test('itinerary instance can have multiple ports',()=>{
         const mexico = new Port('Mexico')
         const bali = new Port ('Bali')
-        const itineraryOfTrip = new  Itinerary([mexico,bali])
-        expect(itineraryOfTrip.ports).toEqual([mexico,bali])
+        const itineraryOfTrip = new Itinerary([mexico,bali])
+        expect(itineraryOfTrip.port).toEqual([mexico,bali])
     })
 })

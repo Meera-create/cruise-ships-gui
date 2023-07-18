@@ -10,16 +10,27 @@ function Ship(itinerary){
 }
 
 Ship.prototype.toSetSail = function () {
-    this.currentPort=0;
-    this.previousPort=null;
+  
+    const newItinerary=this.itinerary;
+    const currentPortIndex= newItinerary.port.indexOf(this.currentPort);
+
+    if(currentPortIndex === (newItinerary.port.length -1)){
+        throw new Error('End of itinerary reached!')
+    }
+    
+    this.previousPort = this.currentPort;
+    this.currentPort=null;
+    
 }
 
 const port = new Port('location')
 
-Ship.prototype.docks=function(port){
+Ship.prototype.docks=function(){
     const myItinerary= this.itinerary;
     const previousPortIndex = myItinerary.port.indexOf(this.previousPort);
-    this.currentPort=myItinerary.port[previousPortIndex + 1];
+    //previousPortIndex -->logs -1 as index value not 0 
+    this.currentPort=myItinerary.port[0][previousPortIndex+2];
+    
 }
 
 

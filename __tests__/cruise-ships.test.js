@@ -22,12 +22,15 @@ describe("constructor for ship",()=>{
     })
 
     test(" the ship can set sail",()=>{
-        const Iceland = new Port('Iceland')
-        const icelandItinerary = new Itinerary([Iceland])
-        const myShip = new Ship (icelandItinerary);
+        const iceland = new Port('Iceland')
+        const singapore =new Port('Singapore')
+        const tripItinerary = new Itinerary([iceland,singapore])
+        const myShip = new Ship (tripItinerary);
+        myShip.currentPort=iceland;
+        myShip.previousPort=null;
         myShip.toSetSail()
         expect(myShip.currentPort).toBeFalsy();
-        expect(myShip.previousPort).toBe(Iceland);
+        expect(myShip.previousPort).toBe(iceland);
     })
 
     xtest('it can\'t set sail further than the last item on itinerary',()=>{
@@ -35,22 +38,25 @@ describe("constructor for ship",()=>{
         const seoul = new Port('Seoul');
         const myItinerary=new Itinerary([paris,seoul]);
         const myShip = new Ship (myItinerary);
-
-        Ship.toSetSail();
-        Ship.docks();
-        expect(()=>Ship.toSetSail()).toThrowAnError('End of Itinerary reached!');
+        myShip.toSetSail();
+        myShip.docks();
+        expect(()=>myShip.toSetSail()).toThrowError('End of Itinerary reached!');
     })
 
-    xtest('it docks at another port',()=>{ 
+    test('it docks at another port',()=>{ 
         const peru = new Port ('Peru')
         const china = new Port ('China');
         const wholeItinerary = new Itinerary([peru,china])
         const myShip = new Ship (wholeItinerary)
+        myShip.currentPort=peru;
+        myShip.previousPort=null;
         myShip.toSetSail()
         myShip.docks()
 
+
+        expect(myShip.previousPort).toBe(peru);
         expect(myShip.currentPort).toBe(china);
-        //expect(myShip.previousPort).toBe(peru);
+        
     })
 })
 

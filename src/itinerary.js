@@ -1,6 +1,6 @@
 
 function Itinerary(ports){
-    this.port=[ports]
+    this.port=ports;
 }
 
 

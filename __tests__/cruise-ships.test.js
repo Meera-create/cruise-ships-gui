@@ -15,13 +15,14 @@ describe("constructor for ship",()=>{
     })
 
     test("the ship has a start point",()=>{
-        const portRome = new Port('Rome')
-        const itineraryRome = new Itinerary([portRome])
-        const myShip = new Ship(itineraryRome)
-        expect(myShip.currentPort[0]).toBe(portRome)
+        const portRome = new Port('Rome');
+        const itineraryRome = new Itinerary([portRome]);
+        const myShip = new Ship(itineraryRome);
+        expect(myShip.currentPort).toBe(portRome)
     })
 
     test(" the ship can set sail",()=>{
+        console.log(itinerary)
         const iceland = new Port('Iceland')
         const singapore =new Port('Singapore')
         const tripItinerary = new Itinerary([iceland,singapore])
@@ -29,8 +30,11 @@ describe("constructor for ship",()=>{
         myShip.currentPort=iceland;
         myShip.previousPort=null;
         myShip.toSetSail()
+      
+        
         expect(myShip.currentPort).toBeFalsy();
         expect(myShip.previousPort).toBe(iceland);
+        //expect(iceland.ships).not.toContain(myShip);
     })
 
     xtest('it can\'t set sail further than the last item on itinerary',()=>{
@@ -43,20 +47,30 @@ describe("constructor for ship",()=>{
         expect(()=>myShip.toSetSail()).toThrowError('End of Itinerary reached!');
     })
 
-    test('it docks at another port',()=>{ 
+    
+    xtest('it docks at another port',()=>{ 
         const peru = new Port ('Peru')
         const china = new Port ('China');
         const wholeItinerary = new Itinerary([peru,china])
         const myShip = new Ship (wholeItinerary)
-        myShip.currentPort=peru;
-        myShip.previousPort=null;
+
         myShip.toSetSail()
         myShip.docks()
-
-
+        console.log(myShip)
+        
+      
+        expect(china.ships).toContain(myShip);
         expect(myShip.previousPort).toBe(peru);
         expect(myShip.currentPort).toBe(china);
         
+    })
+
+    test('new ship gets added to port on instatiation',()=>{
+        const fiji = new Port ('Fiji')
+        const myItinerary = new Itinerary([fiji])
+        const newShip= new Ship(myItinerary);
+
+        expect(fiji.ships).toContain(newShip)
     })
 })
 

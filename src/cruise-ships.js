@@ -19,9 +19,12 @@ Ship.prototype.toSetSail = function () {
         throw new Error('End of itinerary reached!')
     }
 
-    currentShip =newItinerary.port.ships;
+    //const currentShip =newItinerary.port.ships;
    // currentShip=this.currentPort.ships[currentPortIndex];
-    this.previousPort = this.currentPort.removeShip(currentShip);
+    //this.previousPort = this.currentPort.removeShip(currentShip);
+    this.previousPort=this.currentPort;
+    //because the function returns nothing you cannot assign it to a value as it will assign undfined
+    this.previousPort.removeShip(this);
     this.currentPort=null;
     
 }
@@ -30,8 +33,10 @@ Ship.prototype.toSetSail = function () {
 Ship.prototype.docks=function(){
     const myItinerary= this.itinerary;
     const previousPortIndex = myItinerary.port.indexOf(this.previousPort);
-    this.currentPort=myItinerary.port[previousPortIndex+1];
-    this.currentPort.addShip();
+    //this.currentPort.addShip(this);
+    //this.currentPort=myItinerary.port[previousPortIndex+1];
+    
+    
    
     
 }

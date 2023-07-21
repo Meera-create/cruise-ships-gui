@@ -10,8 +10,8 @@ describe('port constructor',()=>{
         let myShip2;
     beforeEach(()=>{
         london=new Port('London');
-        myShip={};
-        myShip2={};
+        myShip=jest.fn();
+        myShip2=jest.fn();
         
     })
 

@@ -8,8 +8,8 @@ describe('itinerary ',()=>{
     })
 
     test('itinerary instance can have multiple ports',()=>{
-        const mexico = new Port('Mexico')
-        const bali = new Port ('Bali')
+        const mexico = new Port(jest.fn())
+        const bali = new Port (jest.fn())
         const itineraryOfTrip = new Itinerary([mexico,bali])
         expect(itineraryOfTrip.port).toEqual([mexico,bali])
     })

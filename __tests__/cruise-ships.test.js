@@ -13,8 +13,8 @@ describe("ship",()=>{
         let myShip;
     
         beforeEach(()=>{ 
-             iceland = new Port('Iceland');
-             singapore =new Port('Singapore');
+             iceland = new Port(jest.fn());
+             singapore =new Port(jest.fn());
              tripItinerary = new Itinerary([iceland,singapore]);
              myShip = new Ship (tripItinerary);
         })

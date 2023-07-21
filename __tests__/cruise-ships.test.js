@@ -13,13 +13,14 @@ describe("ship",()=>{
         let myShip;
     
         beforeEach(()=>{ 
+            //iceland=new Port(Iceland);
              iceland = {
                 name:'Iceland',
                 ships:[],
                 addShip: jest.fn(),
                 removeShip: jest.fn(),
              };
-
+            //singpapore=new Port('Singapore);
              singapore = {
                 name:'Singapre',
                 ships:[],
@@ -27,7 +28,10 @@ describe("ship",()=>{
                 removeShip: jest.fn(),
              };
 
-             tripItinerary = new Itinerary([iceland,singapore]);
+             //tripItinerary = new Itinerary([iceland,singapore]);
+             tripItinerary={
+                port:[iceland,singapore]
+             };
              myShip = new Ship (tripItinerary);
         })
 

@@ -56,12 +56,12 @@ describe("constructor for ship",()=>{
 
         myShip.toSetSail()
         myShip.docks()
-        console.log(myShip)
+        
         
       
-        //expect(china.ships).toContain(myShip);
-        //expect(myShip.previousPort).toBe(peru);
-        //expect(myShip.currentPort).toBe(china);
+        expect(china.ships).toContain(myShip);
+        expect(myShip.previousPort).toBe(peru);
+        expect(myShip.currentPort).toBe(china);
         
     })
 

@@ -13,8 +13,20 @@ describe("ship",()=>{
         let myShip;
     
         beforeEach(()=>{ 
-             iceland = new Port(jest.fn());
-             singapore =new Port(jest.fn());
+             iceland = {
+                name:'Iceland',
+                ships:[],
+                addShip: jest.fn(),
+                removeShip: jest.fn(),
+             };
+
+             singapore = {
+                name:'Singapre',
+                ships:[],
+                addShip: jest.fn(),
+                removeShip: jest.fn(),
+             };
+
              tripItinerary = new Itinerary([iceland,singapore]);
              myShip = new Ship (tripItinerary);
         })
@@ -35,8 +47,7 @@ describe("ship",()=>{
       
         
         expect(myShip.currentPort).toBeFalsy();
-        expect(myShip.previousPort).toBe(iceland);
-        expect(iceland.ships).not.toContain(myShip);
+        expect(iceland.removeShip).toHaveBeenCalledWith(myShip);
     })
 
     test('it can\'t set sail further than the last item on itinerary',()=>{
@@ -51,14 +62,15 @@ describe("ship",()=>{
         myShip.toSetSail()
         myShip.docks()
       
-        expect(singapore.ships).toContain(myShip);
+        //expect(singapore.ships).toContain(myShip);
+        expect(singapore.addShip).toHaveBeenCalledWith(myShip);
         expect(myShip.previousPort).toBe(iceland);
         expect(myShip.currentPort).toBe(singapore);
         
     })
     
     test('new ship gets added to port on instatiation',()=>{
-        expect(iceland.ships).toContain(myShip);
+        expect(iceland.addShip).toHaveBeenCalledWith(myShip);
     })
 })
 })

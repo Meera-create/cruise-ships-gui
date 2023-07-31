@@ -1,3 +1,4 @@
+(function exportPort(){
 function Port(name){
     this.name=name;
     this.ships=[];
@@ -5,15 +6,22 @@ function Port(name){
 
 //put ship instance into functions
 
-Port.prototype.addShip=function(shipInstance){
-    this.ships=[shipInstance]
+Port.prototype={
+    addShip(ship){
+    this.ships.push(ship);
+},
+
+    removeShip (ship){
+    //const indexRemove = this.ships.indexOf(ship)
+    this.ships=this.ships.filter(dockedShip => dockedShip !==ship);
+}
+};
+
+if(typeof module !== 'undefined' && module.exports){
+    module.exports = Port;
+}else{
+    window.Port=Port;
 }
 
-Port.prototype.removeShip = function(shipInstance){
-    const indexRemove = this.ships.indexOf(shipInstance)
-    this.ships.splice(indexRemove,indexRemove+1);
-}
+}());
 
-
-
-module.exports=Port;

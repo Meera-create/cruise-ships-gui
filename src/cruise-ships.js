@@ -2,6 +2,7 @@
 const Port = require ('../src/port')
 const Itinerary = require('../src/itinerary')
 
+(function exportShip(){
 function Ship(itinerary){
     this.itinerary=itinerary;
     this.currentPort=itinerary.port[0];
@@ -36,13 +37,17 @@ Ship.prototype.docks=function(){
    
     
     
-   
-    
 }
+if(typeof module !== 'undefined' && module.exports){
+    module.exports = Ship;
+}else{
+    window.Ship=Ship;
+}
+}())
 
 
 
-module.exports = Ship;
+
 
 
 

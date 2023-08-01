@@ -4,7 +4,7 @@ function Port(name){
     this.ships=[];
 }
 
-//put ship instance into functions
+
 
 Port.prototype={
     addShip(ship){

@@ -56,7 +56,7 @@ renderShip(){
   const portElement = document.querySelector(`[data-port-index='${shipPortIndex}']`);
   //finds the  .port element that has the same index as shipPortINdex
 
-  const shipElement= doucment.querySelector('#ship');
+  const shipElement= document.querySelector('#ship');
   shipElement.style.top=`${portElement.offsetTop + 32 }px`;
   shipElement.style.left=`${portElement.offsetLeft - 32}px`;
   //offset give x/y co-ords from how far the element is from parent element
@@ -83,16 +83,6 @@ setSail(){
       clearInterval(sailInterval);
     }
     shipElement.style.left = `${shipLeft + 1}px`;
-  },20);
-  const sailInterval = setInterval(()=>{
-    const shipLeft= parseInt(shipElement.style.left,10);
-    if(shipLeft === (nextPortElement.offsetLeft-32)){
-      ship.setSail();
-      ship.dock();
-      clearInterval(sailInterval);
-
-    }
-    shipElement.style.left=`${shipLeft+1}px`;
   },20);
  },
 }

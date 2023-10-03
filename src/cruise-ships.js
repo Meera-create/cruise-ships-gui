@@ -33,6 +33,7 @@ Ship.prototype.docks=function(){
     const currentPlace= myItinerary.port[previousPortIndex+1]
     this.currentPort=currentPlace
     this.currentPort.addShip(this)
+    
     //must do the line above in one step instead of this.currentPort=currentPlace.addSHip()
    
     

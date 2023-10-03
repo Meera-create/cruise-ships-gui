@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equip="X-UA-Compatible" content="ie=edge">
     <title>Cruise Ships</title>
-    <link href="./css/style.css" rel="stylesheet">
-    <link href="./css/normalize.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet"  type="text/css">
+    <link href="./css/normalize.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Lilita+One&display=swap" rel="stylesheet">
@@ -17,16 +17,22 @@
         <div id="ports"></div>
         <div id="ship"></div>
         <button id="sailbutton">Set Sail</button>
+        <div id="headerPort">
+            <p>Next Port:</p>
+            <p>Current Port:</p>
+        </div>
+
     </div>
     
-    
+   
 
 
     <script src="./src/itinerary.js" ></script>
     <script src="./src/port.js" ></script>
-    <script src="./src/controller.js">
+    <script src="./src/controller.js"></script>
+    <script src="./src/cruise-ships.js"></script>
     
-        
+    <script> 
         const itinerary= new Itinerary ([
             new Port('New York City'),
             new Port('Grand Turk'),

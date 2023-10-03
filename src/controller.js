@@ -1,3 +1,5 @@
+// const { describe } = require("yargs");
+
  (function exportController(){
  function Controller (ship) {
   this.ship=ship;
@@ -80,11 +82,29 @@ setSail(){
     if (shipLeft=== (nextPortElement.offsetLeft -32)){
       ship.setSail();
       ship.dock();
+      this.renderMessage(`you have arrived at ${currentPort.name}`)
       clearInterval(sailInterval);
     }
     shipElement.style.left = `${shipLeft + 1}px`;
   },20);
  },
+
+ //message box
+ renderMessage(message){
+  const messageID = document.createElement('div');
+  messageID.id='message'
+  messageID.innerHTML='message';
+  document.querySelector('#viewport').appendChild(messageID)
+  
+  setTimeout(() => {
+    document.querySelector('#viewport').removeChild(messageID)
+  }, 2000);
+ 
+  //method when ship goes too far????
+
+
+ },
+
 }
 
 if(typeof module !== 'undefined' && module.exports){

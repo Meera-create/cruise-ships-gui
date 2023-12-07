@@ -1,3 +1,3 @@
 # cruise-ships
 
-This is my cruise ships project where I will be using Object Oriented Programming.
+This is my cruise ships project where I will be using Object Oriented Programming.#cruise ships gui continued

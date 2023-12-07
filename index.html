@@ -16,35 +16,65 @@
     <div id="viewport">
         <div id="ports"></div>
         <div id="ship"></div>
+        <div id="message"></div>
         <button id="sailbutton">Set Sail</button>
         <div id="headerPort">
-            <p>Next Port:</p>
-            <p>Current Port:</p>
+            <p id="next-port">Next Port:</p>
+            <p id="current-port">Current Port:</p>
         </div>
+
+    </div>
+
+    <div id="form">
+        <form>
+            <label>Port Name</label>
+            <input id="new-port-name" type="text">
+            <button id="form-submit" type="submit">Enter Port Name</button>
+        </form>
 
     </div>
     
    
 
 
-    <script src="./src/itinerary.js" ></script>
-    <script src="./src/port.js" ></script>
+   
+    
     <script src="./src/controller.js"></script>
+    <script src="./src/port.js" ></script>
+     <script src="./src/itinerary.js" ></script>
     <script src="./src/cruise-ships.js"></script>
     
     <script> 
-        const itinerary= new Itinerary ([
-            new Port('New York City'),
-            new Port('Grand Turk'),
-            new Port('San Juan'),
-            new Port('Amber Cover')
-        ]);
-        const ship = new Ship(itinerary);
-        const controller = new Controller(ship);
+        
+        const itinerary= new Itinerary ([]);
+         
+        // const ship = new Ship(itinerary);
+        // const controller = new Controller(ship);
 
-        controller.renderPorts(itinerary.ports);
+        
+
+        // controller.renderPorts(itinerary.ports);
+        // controller.renderShip();
         //ports or port?
-        controller.renderShip(ship);
+        // controller.renderShip(ship);
+
+       const submitPort= document.querySelector('#form-submit');
+      
+
+       function AddPort(){
+        const newPort = document.querySelector('#new-port-name').value;
+         //gets the value of what you submitted in the form
+
+        itinerary.ports.push(new Port(newPort));
+        document.querySelector('#new-port-name').value='';
+        const ship = new Ship(itinerary);
+        const controllerr = new Controller(ship);
+        controller.renderPorts(itinerary.ports);
+        controller.renderShip();
+        submitPort.removeEventListener('click', AddPort)
+       }
+       
+       submitPort.addEventListener('click',AddPort);
 
        
         

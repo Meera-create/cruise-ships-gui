@@ -3,9 +3,10 @@ function Port(name){
     this.name=name;
     this.ships=[];
 }
+    //new port constructor function
 
 
-
+//port methods 
 Port.prototype={
     addShip(ship){
     this.ships.push(ship);

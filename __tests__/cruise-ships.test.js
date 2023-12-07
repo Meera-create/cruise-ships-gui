@@ -18,7 +18,8 @@ describe("ship",()=>{
                 name:'Iceland',
                 ships:[],
                 addShip: jest.fn(),
-                removeShip: jest.fn(),
+                 removeShip: jest.fn(),
+                //substituted the mthods for a spy jest.fn()
              };
             //singpapore=new Port('Singapore);
              singapore = {
@@ -35,7 +36,7 @@ describe("ship",()=>{
              myShip = new Ship (tripItinerary);
         })
 
-    test("can be instatiated",()=>{
+    test("ship can be instatiated",()=>{
            expect(myShip).toBeInstanceOf(Object);
 
     })
@@ -51,14 +52,20 @@ describe("ship",()=>{
       
         
         expect(myShip.currentPort).toBeFalsy();
+        //current port should now be null that the ship is sailing
+        //previous port should now be iceland
         expect(iceland.removeShip).toHaveBeenCalledWith(myShip);
     })
 
     test('it can\'t set sail further than the last item on itinerary',()=>{
         myShip.toSetSail();
         myShip.docks();
-
-        expect(()=>myShip.toSetSail()).toThrowError('End of Itinerary reached!');
+        //ONLY two ports in this itinerary so setSail shouldnt work
+        
+        expect(() => myShip.toSetSail()).toThrowError('End of Itinerary reached!');
+        //reason for using call back function instead of just writing myShip.toSetSail()
+        //is that jest will run the ship to set sail function and will get an errror
+        //so when it tests the error, it won't get the correct response
     })
 
     

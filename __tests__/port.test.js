@@ -1,7 +1,7 @@
 const { beforeAll } = require('jest-circus');
 const Ship = require('../src/cruise-ships');
 const Itinerary = require('../src/itinerary');
-const Port=require('../src/port')
+const Port = require('../src/port')
 
 describe('port',()=>{
 describe('port constructor',()=>{

@@ -106,31 +106,43 @@ setSail(){
       ship.setSail();
       ship.dock();
       this.renderMessage(`you have arrived at ${ship.currentPort.name}`)
+      this.renderDisplay();
       clearInterval(sailInterval);
     }
     shipElement.style.left = `${shipLeft + 1}px`;
   }, 20);
 
-  //adding a next port 
-  const NextPortMessage = document.querySelector('#next-port');
-  const nextPortValue = document.createElemenet('p');
-  nextPortValue.textcontent = ship.currentPort.name;
-  NextPortMessage.appendChild(nextPortValue);
 
-
-  //adding a current port
-  const currentPortMessage = document.querySelector('#next-port');
-  const currentPortValue = document.createElemenet('p');
-  currentPortValue.textcontent = ship.previousPort.name;
-  currentPortMessage.appendChild(currentPortValue);
 
   
 
-  
-
-  
-  
  },
+
+  renderDisplay() {
+
+    const ship = this.ship
+    const headerDisplay = document.querySelector('#headerPort');
+    const currentPortDisplay = document.querySelector('#current-port')
+    currentPortDisplay.innerHTML = `Current Port: ${ship.currentPort.name}`;
+
+    const nextPortIndex = ship.itinerary.ports.indexOf(ship.currentPort)+1
+    
+    const nextPort = ship.itinerary.ports[nextPortIndex];
+
+    let nextPortDisplay;
+
+    if (!nextPort) {
+      return nextPortDisplay.innerHTML = '';
+    } else {
+      nextPortDisplay.innerHTML = `Next Port: ${nextPort.name}`
+    }
+
+
+  
+
+  
+},
+
 
  //message box
  renderMessage(message){
